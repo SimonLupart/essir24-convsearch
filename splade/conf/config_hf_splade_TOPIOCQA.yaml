@@ -1,0 +1,58 @@
+defaults:
+############## TRAIN ###################################
+  - train/config: splade
+  - train/data: distil_from_run_topiocqa
+  - train/model: splade_cocondenser
+############## INDEX ###################################
+  - index: topiocqa
+############## RETRIEVE ################################
+  - retrieve_evaluate: topiocqa
+
+# Direct PARAMETER setting SIGIR 23  CONFIG DENSE 32 NEG NO DISTILLATION
+init_dict:
+  model_type_or_dir: naver/splade-cocondenser-ensembledistil
+  model_type_or_dir_q: naver/splade-cocondenser-ensembledistil
+  freeze_d_model: 1
+
+config:
+  # pretrained_no_yamlconfig: true # added should we really??
+  train_batch_size: 10 # 80 96 128
+  regularizer:
+    FLOPS:
+      lambda_d: 1e-4
+      targeted_rep: rep
+      reg: FLOPS
+    L1:
+      lambda_q: 1e-4
+      targeted_rep: rep
+      reg: L1
+  checkpoint_dir:  ??
+  index_dir: ??
+  out_dir: ??
+  fp16: true
+  hf_training: true
+  max_length: 256
+  # config.lr: 2.0e-5 
+
+hf:
+  training:
+    resume_from_checkpoint: false
+    ddp_find_unused_parameters: false
+    fp16: true
+    logging_steps: 5000
+    save_strategy: epoch
+    dataloader_drop_last: True
+    num_train_epochs: 15
+    warmup_ratio: 0.01
+    mse_margin: false
+    weight_decay: 0
+  model:
+    dense: false
+    shared_weights: false
+  data:
+    distillation: false
+    n_negatives: 16
+
+hydra:
+  run:
+    dir: splade/hydra-log/${now:%Y-%m-%d}/${now:%H-%M-%S}

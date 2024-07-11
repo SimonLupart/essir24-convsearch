@@ -1,0 +1,11 @@
+# @package _global_
+
+data:
+  Q_COLLECTION_PATH: [/projects/0/prjs0871/hackathon/conv-search/DATA/queries_rowid_dev_all.tsv]
+  EVAL_QREL_PATH: [/projects/0/prjs0871/hackathon/conv-search/DATA/qrel_rowid_dev.json]
+
+config:
+  top_k: 1000
+  threshold: 0
+  eval_metric: [[mrr_10, mrr_1000, recall]]
+  retrieval_name: [TOPIOCQA]

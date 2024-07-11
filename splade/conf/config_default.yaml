@@ -1,0 +1,21 @@
+# FILES
+defaults:  # (these specify which config FILES to use)
+  ############## TRAIN ###################################
+  - train/config: splade
+  - train/data: distil_from_run_topiocqa
+  - train/model: splade_cocondenser
+  ############## INDEX ###################################
+  - index: topiocqa
+  ############## RETRIEVE ################################
+  - retrieve_evaluate: topiocqa
+
+# Direct PARAMETER setting
+config:  # to be provided for each run
+  checkpoint_dir: ???
+  index_dir: ???
+  out_dir: ???
+  fp16: true
+
+hydra:
+  run:
+    dir: splade/hydra-log/${now:%Y-%m-%d}/${now:%H-%M-%S}

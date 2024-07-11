@@ -1,0 +1,15 @@
+# @package data
+
+type: json
+TRAIN:
+  DATASET_PATH: /projects/0/prjs0871/hackathon/conv-search/DATA/run.json
+  D_COLLECTION_PATH: /projects/0/prjs0871/hackathon/conv-search/DATA/full_wiki_segments.tsv
+  Q_COLLECTION_PATH: /projects/0/prjs0871/hackathon/conv-search/DATA/queries_all.tsv #todo
+  QREL_PATH: /projects/0/prjs0871/hackathon/conv-search/DATA/qrel.json #todo
+
+# VALIDATION_FULL_RANKING:
+#   D_COLLECTION_PATH: /projects/0/prjs0871/DATA/splade/val_retrieval/msmarco/collection
+#   Q_COLLECTION_PATH: /projects/0/prjs0871/DATA/splade/val_retrieval/msmarco/queries
+#   QREL_PATH: /projects/0/prjs0871/DATA/splade/val_retrieval/msmarco/qrel.json
+#   TOP_K: 500
+

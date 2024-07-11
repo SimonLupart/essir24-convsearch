@@ -1,0 +1,4 @@
+# @package _global_
+
+data:
+  COLLECTION_PATH: /projects/0/prjs0871/hackathon/conv-search/DATA/full_wiki_segments.tsv
